@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/log_pages/check.dart';
-import 'package:frontend/painter.dart';
+import 'package:frontend/log_pages/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,12 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(
-        color: Colors.white,
-        child: CustomPaint(
-          painter: CurvePainter(),
-        )
-      ),
+      home: LogIn(),
     );
   }
 }
