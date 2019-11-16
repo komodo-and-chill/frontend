@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
   
@@ -52,7 +56,16 @@ class SignUpState extends State<SignUp> {
 
   void _signUpUser() {
     if(_formKey.currentState.validate()) {
-      print('valid!!');
+      _formKey.currentState.save();
+      // print('valid!!');
+      Uri uri = Uri.parse('http://192.168.137.1:8080/api/register');
+      http.MultipartRequest request = http.MultipartRequest('POST', uri);
+      request.fields['email'] = _email;
+      request.fields['password'] = _password;
+      request.send().then((response) {
+        print(response.statusCode);
+        print(response.stream);
+      });
     }
     // TODO sign user up
   }
