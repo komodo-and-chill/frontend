@@ -17,10 +17,14 @@ class LogInState extends State<LogIn> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Container(), //TODO: insert stewart picture
             Form(
               key: _formKey,
               child: Column(
-                children: <Widget>[
+                children: <Widget> [
+                  // Container(
+                  //   color: Colors.white,
+                  //   child: Image.asset('logo.jpg')),
                   Container(
                     child: TextFormField(
                       decoration:  InputDecoration(
@@ -45,9 +49,20 @@ class LogInState extends State<LogIn> {
                     height: 50,
                     margin: EdgeInsets.only(top:10.0),
                     child: RaisedButton(
-                      child: Text('Login'),
+                      color: Colors.lightBlue,
+                      child: Text('Login',
+                      style: TextStyle(color: Colors.white)), //TODO: make text bigger
+                      onPressed: () {},
                     ),
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top:10.0),
+                    child:FlatButton(
+                      color: Colors.white,
+                      child: Text('Sign Up?'),
+                      onPressed: () {},
+                    ),
+                  ),
                 ],
               )
             ),
