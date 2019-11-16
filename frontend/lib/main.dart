@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
+import 'package:flutter/services.dart';
+import 'tabs/home.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));   
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: SignUp(),
+      home: Home(),
     );
   }
 }
