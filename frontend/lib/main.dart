@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/log_pages/check.dart';
-import 'package:frontend/painter.dart';
 import 'signup.dart';
 
 void main() => runApp(MyApp());
