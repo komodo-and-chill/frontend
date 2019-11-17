@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import '../api.dart';
 
 class MainTab extends StatefulWidget {
   MainTabState createState() => MainTabState();
 }
 
+String _text = "Walk to work instead of driving there";
+
 class MainTabState extends State<MainTab>{
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +20,7 @@ class MainTabState extends State<MainTab>{
           top: 455,
             child:CurvedListItem(
             color1: Colors.black54,
-            title: "Use the air conditioning less today",
+            title: "$_text",
             time: "100 Points"
             )),
         Positioned(
@@ -70,10 +74,13 @@ class CurvedListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       key: Key(null),
-      onDismissed:(direction){},
+      onDismissed:(direction) async {
+        var points = await putPoints(this.title, int.parse(this.time.split(" ")[0]));
+        print("put the points");
+      },
       child: Container(
         height: 265.0,
-        width: 395.0,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: this.color1,
           borderRadius: const BorderRadius.only(
