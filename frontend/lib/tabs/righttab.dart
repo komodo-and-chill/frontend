@@ -18,45 +18,75 @@ class RightState extends State<Right> {
 
   @override 
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: homeScaffoldKey,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      Text('Location'),
-                      Text('Test'),
-                      SizedBox(
-                        width: 300.0,
-                        height: 75.0,
-                        child: RaisedButton(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.red)
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.1, 0.5, 0.7, 0.9],
+          colors: [
+            Colors.pink[800],
+            Colors.pink[500],
+            Colors.pink[300],
+            Colors.purple[100],
+          ],
+        )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent ,
+        key: homeScaffoldKey,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 50.0)],
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(
+                        width: 2.0, color: Colors.black12
+                      )
+                    ),
+                    height: 400,
+                    width: 350,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        SizedBox(
+                        child:Text('Location', style: TextStyle(fontSize: 30.0)),
                         ),
-                        child: Text('Select Address', style: TextStyle(fontSize: 25.0)),
-                        onPressed: () async {
-                          Prediction p = await PlacesAutocomplete.show(
-                            context: context, apiKey: kGoogleApiKey);
-                            displayPrediction(p);
-                        },
-                      ),
-              ),
-                    ],
-                  ),
+                        SizedBox(
+                          child: Text('Test', style: TextStyle(fontSize: 30.0))),
+                        SizedBox(
+                          width: 300.0,
+                          height: 50.0,
+                          child: RaisedButton(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.black38)
+                          ),
+                          child: Text('Select Address', style: TextStyle(fontSize: 20.0)),
+                          onPressed: () async {
+                            Prediction p = await PlacesAutocomplete.show(
+                              context: context, apiKey: kGoogleApiKey);
+                              displayPrediction(p);
+                          },
+                        ),
                 ),
-            ],
-          )
-        ],
-      )
+                      ],
+                    ),
+                  ),
+              ],
+            )
+          ],
+        )
 
 
+      ),
     );
   }
   Future<double> displayPrediction(Prediction p) async {
