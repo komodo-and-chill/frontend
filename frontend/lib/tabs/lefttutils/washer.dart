@@ -6,32 +6,37 @@ class NumberCountDemo extends StatefulWidget {
 }
 
 class _NumberCountDemoState extends State<NumberCountDemo> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Number Count')),
-      body: Container(
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: Text('Number Counter'), backgroundColor: Colors.blueGrey,),
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FloatingActionButton(
-                onPressed: add,
-                child: Icon(Icons.add, color: Colors.black),
-                backgroundColor: Colors.white,),
-              Text ('$_n', style: TextStyle(fontSize: 60.0)),
-              FloatingActionButton(
-                onPressed: minus,
-                child: Icon(
-                  IconData(0xe15b, fontFamily: 'MaterialIcons'),
-                color: Colors.black),
-                backgroundColor: Colors.white,
-              )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text('+'),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onPressed: add,
+                  ),
+                  Text('${_n}', style: TextStyle(fontSize: 50.0)),
+                  RaisedButton(
+                    child: Text('-'),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onPressed: minus,
+                  )
+                ],
+              ),
             ],
-          ),
+          )
         )
-      )
     );
   }
   int _n = 0;

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
-import 'package:frontend/config.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:provider/provider.dart';
 import 'package:geocoder/geocoder.dart';
 
 const kGoogleApiKey = "AIzaSyDdpJUJkKCejIjqHZvAtCgwebWmmZjOITQ";
@@ -28,14 +26,31 @@ class RightState extends State<Right> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
-                child: Text('Select Address'),
-                onPressed: () async {
-                  Prediction p = await PlacesAutocomplete.show(
-                    context: context, apiKey: kGoogleApiKey);
-                    displayPrediction(p);
-                },
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Text('Location'),
+                      Text('Test'),
+                      SizedBox(
+                        width: 300.0,
+                        height: 75.0,
+                        child: RaisedButton(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.red)
+                        ),
+                        child: Text('Select Address', style: TextStyle(fontSize: 25.0)),
+                        onPressed: () async {
+                          Prediction p = await PlacesAutocomplete.show(
+                            context: context, apiKey: kGoogleApiKey);
+                            displayPrediction(p);
+                        },
+                      ),
               ),
+                    ],
+                  ),
+                ),
             ],
           )
         ],

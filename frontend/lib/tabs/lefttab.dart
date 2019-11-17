@@ -80,11 +80,12 @@ class LeftState extends State<Left> {
     );
   }
 
+  void _washer() {
+    Navigator.pushNamed(context, '/counter');
+  }
+
   void _timer() {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CountDownTimer())
     );
-  }
-  void _washer() {
-    Navigator.push(context, MaterialPageRoute(builder:(BuildContext context) => NumberCountDemo()));
   }
 }

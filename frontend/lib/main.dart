@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'package:flutter/services.dart';
 import 'tabs/home.dart';
+import 'tabs/lefttutils/washer.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));   
@@ -29,6 +30,10 @@ class MyApp extends StatelessWidget {
       title: 'App',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/counter': (context) => NumberCountDemo(),
+      }
     );
   }
 }
