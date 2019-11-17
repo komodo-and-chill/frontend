@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/log_pages/login.dart';
 import 'signup.dart';
 import 'package:flutter/services.dart';
 import 'tabs/home.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: Home(),
+      home: LogIn(),
       initialRoute: '/',
       routes: {
         '/counter': (context) => NumberCountDemo(),
