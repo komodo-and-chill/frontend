@@ -52,31 +52,27 @@ class VLeftState extends State<VLeft> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                              Row(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
-                                AnimatedContainer(
-                                  duration: Duration(seconds: 4),
-                                  width: 60.0,
-                                  height: _height2,
-                                  color: Colors.lightGreenAccent,
+                                Row(
+                                  children: <Widget>[
+                                    Container(child: Text('Nomair: ', style: TextStyle(fontSize: 30.0),),
+                                      margin: EdgeInsets.only(bottom: 75.0, left:30),
+                                      height: 75.0,
+                                      width: 300,
+                                    ),
+                                  ],
                                 ),
-                                AnimatedContainer(
-                                  duration: Duration(seconds: 4),
-                                  width: 60.0,
-                                  height: _height,
-                                  color: Colors.lightGreenAccent,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget> [
-                                SizedBox(
-                                  child: Text('Nomair', style: TextStyle(fontSize: 30.0))
-                                  ),
-                                SizedBox(
-                                  child: Text('You', style: TextStyle(fontSize: 30.0))),
+                                Row(
+                                  children: <Widget>[
+                                    Container(child: Text('You: ', style: TextStyle(fontSize: 30.0)),
+                                      margin: EdgeInsets.only(bottom: 100, left: 30),
+                                    ),
+
+                                  ],
+                                )
                               ],
                             ),
                             RaisedButton(

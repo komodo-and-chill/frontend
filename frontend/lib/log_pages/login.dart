@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:frontend/tabs/home.dart';
 
 class LogIn extends StatefulWidget {
   @override
@@ -37,6 +38,7 @@ class LogInState extends State<LogIn> {
                   Container(
                     margin: EdgeInsets.only(top:10.0),
                     child: TextFormField(
+                      obscureText: true,
                       decoration:  InputDecoration(
                         labelText: 'Password',
                         filled: true, 
@@ -52,7 +54,7 @@ class LogInState extends State<LogIn> {
                       color: Colors.lightBlue,
                       child: Text('Login',
                       style: TextStyle(color: Colors.white)), //TODO: make text bigger
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>Home())),
                     ),
                   ),
                   Container(
