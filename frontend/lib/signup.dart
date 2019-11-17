@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'tabs/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   
@@ -61,8 +62,12 @@ class SignUpState extends State<SignUp> {
       http.MultipartRequest request = http.MultipartRequest('POST', uri);
       request.fields['email'] = _email;
       request.fields['password'] = _password;
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       var response = await http.Response.fromStream(await request.send());
-      print(json.decode(response.body)['message']);
+      var body = json.decode(response.body);
+      prefs.setInt('user_id', body['user']['id']);
+      print(body['message']);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Home()),
