@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:geocoder/geocoder.dart';
+import '../api.dart';
 
-const kGoogleApiKey = "AIzaSyDdpJUJkKCejIjqHZvAtCgwebWmmZjOITQ";
+const kGoogleApiKey = "AIzaSyAsdTqCgH9IL_S7X40SnKQLTpKxMx4YFTQ";
 GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
 class Right extends StatefulWidget{
@@ -15,6 +16,8 @@ final searchScaffoldKey = GlobalKey<ScaffoldState>();
 
 class RightState extends State<Right> {
   Mode _mode = Mode.overlay;
+
+  String _desc = "";
 
   @override 
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class RightState extends State<Right> {
                         child:Text('Location', style: TextStyle(fontSize: 30.0)),
                         ),
                         SizedBox(
-                          child: Text('Test', style: TextStyle(fontSize: 30.0))),
+                          child: Text('$_desc', style: TextStyle(fontSize: 30.0))),
                         SizedBox(
                           width: 300.0,
                           height: 50.0,
@@ -73,7 +76,12 @@ class RightState extends State<Right> {
                           onPressed: () async {
                             Prediction p = await PlacesAutocomplete.show(
                               context: context, apiKey: kGoogleApiKey);
-                              displayPrediction(p);
+                              var addr = await handlePrediction(p);
+                              var data = await apiMaps(addr);
+
+                              setState(() {
+                                this._desc = data;
+                              });
                           },
                         ),
                 ),
@@ -89,19 +97,15 @@ class RightState extends State<Right> {
       ),
     );
   }
-  Future<double> displayPrediction(Prediction p) async {
+  Future<String> handlePrediction(Prediction p) async {
     if (p != null) {
       PlacesDetailsResponse detail = 
       await _places.getDetailsByPlaceId(p.placeId);
 
-      var placeId = p.placeId;
       double lat = detail.result.geometry.location.lat;
       double lng = detail.result.geometry.location.lng;
 
-      var address = await Geocoder.local.findAddressesFromQuery(p.description);
-
-      return lat;
-      return lng; 
+      return lat.toString() + "," + lng.toString();
     }
   }
 

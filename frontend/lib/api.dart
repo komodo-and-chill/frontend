@@ -25,3 +25,12 @@ Future<void> putPoints(String description, int points) async {
   prefs.setInt('points', prefs.getInt('points') + points);
   return;
 }
+
+Future<String> apiMaps(String origin) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  Uri uri = Uri.parse('http://192.168.137.1:8081/api/commute_info?origin='+origin+'&destination=Kilburn Building');
+  var body = json.decode((await http.get(uri)).body);
+  return 'Walking: ' + body['walking']['duration'] +
+       '\nPublic Transport: ' + body['transit']['duration'] +
+       '\nDriving: ' + body['driving']['duration'];
+}
