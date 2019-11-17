@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/tabs/tabsmain.dart';
+import 'package:frontend/tabs/lefttutils/shower.dart';
+import 'lefttutils/shower.dart';
+import 'lefttutils/washer.dart';
 
 class Left extends StatefulWidget{
   LeftState createState() => LeftState();
@@ -42,8 +44,8 @@ class LeftState extends State<Left> {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(75)),
               color: Colors.pinkAccent,) ,
               child: FlatButton(
-              child: Text('this is a button'),
-              onPressed: (){},
+              child: Text('Shower', style: TextStyle(fontSize: 60.0, color: Colors.white70),),
+              onPressed: () => _timer(),
             ))),
             Container(
             height: 190,
@@ -55,8 +57,8 @@ class LeftState extends State<Left> {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(75)),
               color: Colors.purpleAccent,) ,
               child: FlatButton(
-              child: Text('this is a button'),
-              onPressed: (){},
+              child: Text('DishWasher', style: TextStyle(fontSize: 60.0, color: Colors.white70),),
+              onPressed: () => _washer(),
             ))),
             Container(
             height: 190,
@@ -68,13 +70,22 @@ class LeftState extends State<Left> {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(75)),
               color: Colors.black54,) ,
               child: FlatButton(
-              child: Text('this is a button'),
-              onPressed: (){},
+              child: Text('Washer', style: TextStyle(fontSize: 60.0, color: Colors.white70),),
+              onPressed: () => _washer(),
             ))),
 
         ],
       )
       
+    );
+  }
+
+  void _washer() {
+    Navigator.pushNamed(context, '/counter');
+  }
+
+  void _timer() {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CountDownTimer())
     );
   }
 }

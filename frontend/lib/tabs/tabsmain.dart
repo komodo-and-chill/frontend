@@ -16,22 +16,22 @@ class MainTabState extends State<MainTab>{
           top: 455,
             child:CurvedListItem(
             color1: Colors.black54,
-            title: "Test4",
-            time: "TODAY TestTime"
+            title: "Use the air conditioning less today",
+            time: "100 Points"
             )),
         Positioned(
           top:265.0,
             child:CurvedListItem(
               color1: Colors.purpleAccent,
-              title: "Test3",
-              time: "TODAY TestTime"
+              title: "Do not user the dryer, hang your clothes up",
+              time: "500 Points"
               )),
         Positioned(
           top:75.0,
             child:CurvedListItem(
               color1: Colors.pinkAccent,
-              title: "Test2",
-              time: "TODAY TestTime"
+              title: "Walk to work instead of driving there",
+              time: "300 Points"
               )),
           Positioned(
             child:Container(
@@ -40,7 +40,7 @@ class MainTabState extends State<MainTab>{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Tasks', style: TextStyle(fontSize: 60.0),),
+                  Text('Daily', style: TextStyle(fontSize: 60.0),),
                 ],
               ),
               decoration: BoxDecoration(
@@ -90,14 +90,14 @@ class CurvedListItem extends StatelessWidget {
           children: <Widget>[
             Text(
               time,
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: TextStyle(color: Colors.white24, fontSize: 20),
             ),
             SizedBox(height: 2),
             Text(
               title,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 22,
+                fontSize: 30,
                 fontWeight: FontWeight.bold),
               ),
               Row(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/tabs/lefttutils/washer.dart';
 import 'tabsmain.dart';
 import 'lefttab.dart';
 import 'righttab.dart';
@@ -14,7 +15,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
   void initState(){
     super.initState();
 
-    controller = TabController(length: 3, vsync: this);
+    controller = TabController(length: 4, vsync: this);
   }
 
   @override 
@@ -27,7 +28,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     // print(check());
     return Scaffold(
-      body: getTabBarView(<Widget>[Left(), MainTab(), Right()]
+      body: getTabBarView(<Widget>[Left(), MainTab(), Right(), NumberCountDemo()]
       ),
       bottomNavigationBar: Material(
         color: Colors.blueGrey,
@@ -54,6 +55,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
         ),
         Tab(
           icon: Icon(Icons.map)
+        ),
+        Tab(
+          icon: Icon(Icons.accessibility)
         )
       ],
       controller: controller,
