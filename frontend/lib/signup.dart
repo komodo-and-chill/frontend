@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'tabs/home.dart';
 
 class SignUp extends StatefulWidget {
   
@@ -50,10 +54,19 @@ class SignUpState extends State<SignUp> {
     );
   }
 
-  void _signUpUser() {
+  void _signUpUser() async {
     if(_formKey.currentState.validate()) {
-      print('valid!!');
+      _formKey.currentState.save();
+      Uri uri = Uri.parse('http://192.168.137.1:8081/api/register');
+      http.MultipartRequest request = http.MultipartRequest('POST', uri);
+      request.fields['email'] = _email;
+      request.fields['password'] = _password;
+      var response = await http.Response.fromStream(await request.send());
+      print(json.decode(response.body)['message']);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home()),
+      );
     }
-    // TODO sign user up
   }
 }
