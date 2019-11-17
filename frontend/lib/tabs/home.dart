@@ -3,6 +3,7 @@ import 'package:frontend/tabs/lefttutils/washer.dart';
 import 'tabsmain.dart';
 import 'lefttab.dart';
 import 'righttab.dart';
+import 'verleft.dart';
 
 class Home extends StatefulWidget{
   HomeState createState() => HomeState();
@@ -28,7 +29,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     // print(check());
     return Scaffold(
-      body: getTabBarView(<Widget>[Left(), MainTab(), Right(), NumberCountDemo()]
+      body: getTabBarView(<Widget>[VLeft() ,Left(), MainTab(), Right()]
       ),
       bottomNavigationBar: Material(
         color: Colors.blueGrey,
@@ -48,6 +49,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
     return TabBar(
       tabs: <Tab> [
         Tab(
+          icon: Icon(Icons.score)
+        ),
+        Tab(
           icon: Icon(Icons.search)
         ),
         Tab(
@@ -56,9 +60,6 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
         Tab(
           icon: Icon(Icons.map)
         ),
-        Tab(
-          icon: Icon(Icons.accessibility)
-        )
       ],
       controller: controller,
     );

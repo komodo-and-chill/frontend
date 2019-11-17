@@ -73,7 +73,7 @@ class CurvedListItem extends StatelessWidget {
       onDismissed:(direction){},
       child: Container(
         height: 265.0,
-        width: 395.0,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: this.color1,
           borderRadius: const BorderRadius.only(
